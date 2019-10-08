@@ -1,3 +1,9 @@
+wget-el (0.5.0-9xenial2) xenial; urgency=low
+
+  * Packaging fix.
+
+ -- Igor B. Poretsky <poretsky@mlbox.ru>  Wed, 09 Oct 2019 02:21:17 +0300
+
 wget-el (0.5.0-9xenial1) xenial; urgency=low
 
   * Upstream updates.
