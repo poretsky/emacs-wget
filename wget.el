@@ -439,8 +439,7 @@ When download dir is not directory or unwritable, get error"
       (error "Can't open download directory: %s" dir))
     ;; Change Directory
     (setq dir (expand-file-name dir))
-    (save-excursion
-      (set-buffer (get-buffer-create (or wget-process-buffer " *wget*")))
+    (with-current-buffer (get-buffer-create (or wget-process-buffer " *wget*"))
       (cd dir))))
 
 ;; filter functions
@@ -605,8 +604,7 @@ process."
 	 (lang (concat "LANG=" (getenv "LANG")))
 	 (process-environment (cons "LANG=C"
 				    (delete lang (copy-sequence process-environment))))
-	 (proc (save-excursion
-		 (set-buffer (or buf " *wget*"))
+	 (proc (with-current-buffer (or buf " *wget*")
 		 (wget-write-download-log uri)
 		 (apply 'start-process "wget" buf wget-command args)))
 	 (win  (selected-window)))
@@ -637,8 +635,7 @@ process."
   "Process filter function for wget.
 Argument PROC is process of wget and argument STRING is an output string from wget."
   (when wget-debug
-    (save-excursion
-      (set-buffer (get-buffer-create wget-debug-buffer))
+    (with-current-buffer (get-buffer-create wget-debug-buffer)
       (insert string "")))
   (when (string-match "[0-9a-Z]" string) ; Ignore wget output that contains only `.'
     (let ((proc-cell (wget-get-wget-process proc))
@@ -892,8 +889,7 @@ Keybindings:
   "Revert wget buffer."
   (interactive)
   (when wget-process-buffer
-    (save-excursion
-      (set-buffer wget-process-buffer)
+    (with-current-buffer wget-process-buffer
       (let ((proc-alist (wget-get-process-alist))
 	    (buffer-read-only nil)
 	    (height (wget-window-height)))
@@ -902,7 +898,7 @@ Keybindings:
 	(insert "  --- Wget Process ---")
 	(if proc-alist
 	    (progn
-	      (mapcar 'wget-progress-update proc-alist)
+	      (mapc 'wget-progress-update proc-alist)
 	      (when (and
 		     (not (one-window-p))
 		     (> height (+ 2 (length proc-alist))))
@@ -1028,8 +1024,7 @@ Argument PROC-CELL is cons cell of (URI . PROCESS)."
 		     str t)))
 	(setq str (wget-replace-regexp-in-string
 		   "%U" uri str t))
-	(save-excursion
-	  (set-buffer (or (get-file-buffer log) (find-file-noselect log)))
+	(with-current-buffer (or (get-file-buffer log) (find-file-noselect log))
 	  (if wget-add-download-log-eof
 	      (goto-char (point-max))
 	    (goto-char (point-min)))
