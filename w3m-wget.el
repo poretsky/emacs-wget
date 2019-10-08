@@ -26,6 +26,9 @@
 ;;; Code:
 (autoload 'wget-api "wget" "Application Program Interface for wget")
 
+(declare-function w3m-anchor "ext:w3m-util.el" (&optional position))
+(declare-function w3m-image "ext:w3m-util.el" (&optional position))
+
 (defgroup w3m-wget nil
   "wget interface for emacs-w3m."
   :group 'wget
@@ -42,6 +45,11 @@
 ;; Eval after load w3m.el
 ;;
 (eval-after-load "w3m" '(progn
+
+(defvar w3m-current-title)
+(defvar w3m-current-url)
+(defvar w3m-mode-map)
+(defvar wget-current-title)
 
 (defun w3m-wget (arg)
   "Download anchor, image, or current page.
