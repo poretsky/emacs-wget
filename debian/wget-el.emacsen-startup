@@ -20,6 +20,7 @@
     (debian-pkg-add-load-path-item package-dir)
     (autoload 'wget "wget" "wget interface for Emacsen." t)
     (autoload 'wget-web-page "wget" "wget interface to download whole web page." t)
+    (load "wget-custom")
     (load "w3m-wget")
     (autoload 'w3-wget "w3-wget" "wget interface for Emacs/W3." t)
     (defvar wget-basic-options
