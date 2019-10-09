@@ -1,2 +1,2 @@
-;;; This file is only used for byte-compileng EmacsLisp file.
+;;; This file is only used for byte-compiling EmacsLisp file.
 (setq load-path (cons "." load-path))
