@@ -51,11 +51,15 @@
 (defvar w3m-mode-map)
 (defvar wget-current-title)
 
+(defun wget-w3m-current-link ()
+  "Get a link under point."
+  (or (w3m-anchor) (w3m-image)))
+
 (defun w3m-wget (arg)
   "Download anchor, image, or current page.
 With prefix argument ARG, you can change uri."
   (interactive "P")
-  (let ((uri (or (w3m-anchor) (w3m-image))))
+  (let ((uri (wget-w3m-current-link)))
     (setq wget-current-title w3m-current-title)
     (wget-api uri w3m-current-url arg)))
 
