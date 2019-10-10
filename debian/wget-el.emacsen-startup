@@ -21,7 +21,7 @@
     (autoload 'wget "wget" "wget interface for Emacsen." t)
     (autoload 'wget-web-page "wget" "wget interface to download whole web page." t)
     (load "wget-custom")
-    (load "w3m-wget")
+    (eval-after-load "w3m" '(load "w3m-wget"))
     (autoload 'w3-wget "w3-wget" "wget interface for Emacs/W3." t)
     (defvar wget-basic-options
       '("-equiet=off"                   ; avoid problems when your .wgetrc is set "quiet = on"

@@ -176,6 +176,19 @@ in the format `wget-download-log-format'."
   :group 'wget
   :type 'boolean)
 
+;; w3m
+
+(defgroup w3m-wget nil
+  "wget interface for emacs-w3m."
+  :group 'wget
+  :group 'w3m
+  :prefix "w3m-wget-")
+
+(defcustom w3m-wget-substitute-download-command t
+  "*If non-nil, substitute download command from emacs-w3m default to `w3m-wget'."
+  :group 'w3m-wget
+  :type 'boolean)
+
 
 (provide 'wget-custom)
 ;;; wget-custom.el ends here
