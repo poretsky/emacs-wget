@@ -1,3 +1,9 @@
+wget-el (0.5.0-11xenial1) xenial; urgency=low
+
+  * Don't imply w3m loading on startup.
+
+ -- Igor B. Poretsky <poretsky@mlbox.ru>  Thu, 10 Oct 2019 04:47:10 +0300
+
 wget-el (0.5.0-10xenial1) xenial; urgency=low
 
   * W3m cooperation fix.
