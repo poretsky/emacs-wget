@@ -1,0 +1,116 @@
+wget-el (0.5.0-11stretch1) stretch; urgency=low
+
+  * Upstream updates.
+  * Get rid of compilation warnings.
+  * W3m compatibility fix.
+  * Load customization options on startup.
+  * Don't imply w3m loading on startup.
+  * Packaged for Debian Stretch.
+
+ -- Igor B. Poretsky <poretsky@mlbox.ru>  Sat, 18 Jan 2020 08:07:07 +0300
+
+wget-el (0.5.0-8) unstable; urgency=low
+
+  * Use debian-pkg-add-load-path-item in startup script, as demanded by
+    Debian Emacs policy. Also thanks to Kevin Ryde for spotting this
+    (Closes: #582576).
+  * Change email address to jmaslibre@debian.org.gt everywhere.
+  * debian/wget-el.install added.
+  * lpath.el removed because it is not needed (Closes: #582577).
+  * debian/rules switch to dh 7.
+  * debian/compat, raised to 7.
+  * Switch to dpkg-source 3.0 (quilt) format.
+  * debian/control:
+    - Build dependen on version >= 7.0.50~ of debhelper because
+      debhelper's overrides need it.
+    - Updated policy to 3.9.1 (no changes needed)
+
+ -- Josue Abarca <jmaslibre@debian.org.gt>  Tue, 27 Jul 2010 15:27:10 -0600
+
+wget-el (0.5.0-7) unstable; urgency=low
+
+  * debian/rules:
+    - Removed unused option "dh_install -m 0664" (closes: Bug#518855)
+    - dh_prep replaces "dh_clean -k" (deprecated)
+  * Move debhelper compat level to 7
+  * debian/control:
+    - Updated policy to 3.8.1 (no changes needed)
+    - The word "an" have been removed from the short description
+    - Updated "debhelper" dependency
+
+ -- Josue Abarca <jmaslibre@gmail.com>  Mon, 16 Mar 2009 00:17:04 -0600
+
+wget-el (0.5.0-6) unstable; urgency=low
+
+  * debian/wget-el.emacsen-startup: Use of eval-after-load replaced.
+    (closes: Bug#492627)
+  * debian/control:
+    - updated policy to 3.8.0 (no changes needed)
+
+ -- Josue Abarca <jmaslibre@gmail.com>  Wed, 20 Aug 2008 00:28:17 -0600
+
+wget-el (0.5.0-5) unstable; urgency=low
+
+  * debian/watch change to version 3, new sintaxys
+    Thanks to Raphael Geissert <atomo64@gmail.com> (closes: Bug#450316)
+  * New Maintainer
+    Thanks to Akira Tagoh for his previus work (closes: Bug#435372)
+  * move debhelper compat level to 6
+  * debian/copyright  file format changed to be machine-interpretable
+  * debian/rules:
+    - used dh_install instead of manually installing files
+    - removed unused: dh_installexamples, dh_installman, dh_link,
+      dh_strip and dh_shlibdeps.
+  * debian/control:
+    - updated "debhelper" dependency
+    - removed "shlibs:Depends"
+    
+ -- Josue Abarca <jmaslibre@gmail.com>  Tue, 15 Apr 2008 00:16:53 -0600
+
+wget-el (0.5.0-4) unstable; urgency=low
+
+  * Orphaning this package.
+
+ -- Akira TAGOH <tagoh@debian.org>  Tue, 31 Jul 2007 18:19:23 +0900
+
+wget-el (0.5.0-3) unstable; urgency=low
+
+  * debian/wget-el.emacsen-startup: removed setq of wget-process-buffer.
+    (closes: Bug#296028)
+
+ -- Akira TAGOH <tagoh@debian.org>  Wed, 23 Feb 2005 20:34:09 +0900
+
+wget-el (0.5.0-2) unstable; urgency=low
+
+  * debian/wget-el.emacsen-startup: added quote.
+    Thanks to Victor Cordero <victorctd@wanadoo.es>. (closes: Bug#284276)
+
+ -- Akira TAGOH <tagoh@debian.org>  Tue,  7 Dec 2004 03:41:42 +0900
+
+wget-el (0.5.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Akira TAGOH <tagoh@debian.org>  Tue, 26 Oct 2004 17:30:20 +0900
+
+wget-el (0.4.2-3) unstable; urgency=low
+
+  * wget-el.emacsen-install: gzip'ed CompilationLog with -f.
+    (closes: Bug#277104)
+  * wget-el.emacsen-startup: fixed a typo. Thanks to Aaron M. Ucko.
+
+ -- Akira TAGOH <tagoh@debian.org>  Mon, 25 Oct 2004 21:07:30 +0900
+
+wget-el (0.4.2-2) unstable; urgency=low
+
+  * wget-el.emacsen-startup: set the variables after loading wget.el
+    (closes: Bug#272154)
+
+ -- Akira TAGOH <tagoh@debian.org>  Wed, 22 Sep 2004 09:09:23 +0900
+
+wget-el (0.4.2-1) unstable; urgency=low
+
+  * Initial Release. (closes: Bug#264724)
+
+ -- Akira TAGOH <tagoh@debian.org>  Wed, 11 Aug 2004 14:53:05 +0900
+

@@ -13,8 +13,8 @@ datadir = ${prefix}/share
 lispdir = ${datadir}/emacs/site-lisp/emacs-wget
 
 DOC = COPYING ChangeLog Makefile README README.ja USAGE USAGE.ja
-EL  = wget.el wget-sysdep.el w3-wget.el w3m-wget.el
-ELC = wget.elc wget-sysdep.elc w3-wget.elc w3m-wget.elc
+EL  = wget.el wget-custom.el wget-sysdep.el w3-wget.el w3m-wget.el
+ELC = wget.elc wget-custom.elc wget-sysdep.elc w3-wget.elc w3m-wget.elc
 LPATH = lpath.el
 
 MKDIR = mkdir
