@@ -1,0 +1,32 @@
+;; -*-emacs-lisp-*-
+;;
+;; Emacs startup file for the Debian emacs-wget package
+;;
+;; Originally contributed by Nils Naumann <naumann@unileoben.ac.at>
+;; Modified by Dirk Eddelbuettel <edd@debian.org>
+;; Adapted for dh-make by Jim Van Zandt <jrv@vanzandt.mv.com>
+
+;; The emacs-wget package follows the Debian/GNU Linux 'emacsen' policy and
+;; byte-compiles its elisp files for each 'emacs flavor' (emacs19,
+;; xemacs19, emacs20, xemacs20...).  The compiled code is then
+;; installed in a subdirectory of the respective site-lisp directory.
+;; We have to add this to the load-path:
+(let ((package-dir (concat "/usr/share/"
+                           (symbol-name flavor)
+                           "/site-lisp/wget-el")))
+;; If package-dir does not exist, the sepia package must have
+;; removed but not purged, and we should skip the setup.
+  (when (file-directory-p package-dir)
+    (debian-pkg-add-load-path-item package-dir)
+    (autoload 'wget "wget" "wget interface for Emacsen." t)
+    (autoload 'wget-web-page "wget" "wget interface to download whole web page." t)
+    (load "wget-custom")
+    (eval-after-load "w3m" '(load "w3m-wget"))
+    (autoload 'w3-wget "w3-wget" "wget interface for Emacs/W3." t)
+    (defvar wget-basic-options
+      '("-equiet=off"                   ; avoid problems when your .wgetrc is set "quiet = on"
+        "-P."                           ; Avoid variable wget-download-directory to be ignored, when dir_prefix is set in your .wgetrc
+        "-v"				;--verbose: Be verbose.
+        "--progress=dot") 		;--progress=dot: progress bar (wget => 1.8).
+      "*List of default emacs/wget system options.")
+  ))
