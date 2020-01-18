@@ -1,0 +1,18 @@
+Source: wget-el
+Section: net
+Priority: optional
+Maintainer: Igor B. Poretsky <poretsky@mlbox.ru>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 4.3.0
+Homepage: https://github.com/ataka/emacs-wget
+
+Package: wget-el
+Architecture: all
+Depends: emacs | emacsen, wget, ${misc:Depends}
+Recommends: w3m-el
+Description: interface for wget on Emacsen
+ GNU wget is a free software package for retrieving files
+ using HTTP, HTTPS and FTP, the most widely-used Internet
+ protocols. It is a non-interactive command line tool.
+ This package contains an interface program of GNU wget for
+ Emacsen.
