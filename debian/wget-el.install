@@ -1,0 +1,5 @@
+w3m-wget.el usr/share/emacs/site-lisp/wget-el/
+w3-wget.el usr/share/emacs/site-lisp/wget-el/
+wget.el usr/share/emacs/site-lisp/wget-el/
+wget-sysdep.el usr/share/emacs/site-lisp/wget-el/
+wget-custom.el usr/share/emacs/site-lisp/wget-el/
