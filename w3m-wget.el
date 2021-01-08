@@ -24,50 +24,30 @@
 
 
 ;;; Code:
+(require 'wget-custom)
+(require 'w3m-util "w3m-util" 'noerror)
+
 (autoload 'wget-api "wget" "Application Program Interface for wget")
 
 (declare-function w3m-anchor "ext:w3m-util.el" (&optional position))
 (declare-function w3m-image "ext:w3m-util.el" (&optional position))
-
-(defgroup w3m-wget nil
-  "wget interface for emacs-w3m."
-  :group 'wget
-  :group 'w3m
-  :prefix "w3m-wget-")
-
-(defcustom w3m-wget-substitute-download-command t
-  "*If non-nil, substitute download command from emacs-w3m default to `w3m-wget'."
-  :group 'w3m-wget
-  :type 'boolean)
-
-
-;;
-;; Eval after load w3m.el
-;;
-(eval-after-load "w3m" '(progn
 
 (defvar w3m-current-title)
 (defvar w3m-current-url)
 (defvar w3m-mode-map)
 (defvar wget-current-title)
 
-(defun wget-w3m-current-link ()
-  "Get a link under point."
-  (or (w3m-anchor) (w3m-image)))
-
 (defun w3m-wget (arg)
   "Download anchor, image, or current page.
 With prefix argument ARG, you can change uri."
   (interactive "P")
-  (let ((uri (wget-w3m-current-link)))
+  (let ((uri (or (w3m-anchor) (w3m-image))))
     (setq wget-current-title w3m-current-title)
     (wget-api uri w3m-current-url arg)))
 
-(if w3m-wget-substitute-download-command
-    (substitute-key-definition 'w3m-download-this-url
-			       'w3m-wget w3m-mode-map))
-
-)) ;; eval after load w3m
+(when w3m-wget-substitute-download-command
+  (substitute-key-definition 'w3m-download-this-url
+                             'w3m-wget w3m-mode-map))
 
 
 (provide 'w3m-wget)
